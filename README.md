@@ -29,16 +29,17 @@ Info1 | Info2 | Info3 | Info4 |
 ------------ | -------------|-------------|-------------|
 Text Field | Text Field | Text Field | Text Field | 
 
-Info1 = State ADMIN CODE 
-Info2 = Dataset 
-Info3 = Attribute Name
-Info4 = Feature Class 
+- Info1 = State ADMIN CODE 
+- Info2 = Dataset 
+- Info3 = Attribute Name
+- Info4 = Feature Class 
 
 *Monthly change values will be to the right of the above constants.These values include:
-Pass Counts = How many records are passing quality control
-Total Counts = Total number of records
-Accuracy % = Percent of records passing
-Percent Change = Percent Accuracy change from previous month
+
+- Pass Counts = How many records are passing quality control
+- Total Counts = Total number of records
+- Accuracy % = Percent of records passing
+- Percent Change = Percent Accuracy change from previous month
 
 ## Running The Script
 
