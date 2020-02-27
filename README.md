@@ -11,29 +11,38 @@ Used in the monthly national QAQC process.
 #### Packages Needed
 - os (default)
 - time (default)
+- glob (default)
+- sys (default)
 - datetime (https://docs.python.org/3/library/datetime.html)
 - pandas (http://pandas.pydata.org/)
 - numpy (https://pypi.org/project/numpy/)
-- sys (default)
 - calendar (https://docs.python.org/3/library/calendar.html)
-- glob (default)
 - shutil (https://docs.python.org/3/library/shutil.html)
 - openpyxl (https://pypi.org/project/openpyxl/)
 
 ## Documentation
-This script currently operates off of a table (excel, csv, etc.) to retrieve the list of URLs the user would like to pass into selenium and find the 'View Count:' number. 
+This script currently operates off of several report tables (excel, csv, etc.) to retrieve the monthly QAQC report numbers and stats to be formatted/appened into the 'National_Review_Tracking.xlsx'. The 'National_Review_Tracking.xlsx' will contain the quality numbers and the percent change over time, going back to the year 2017. *Note: Changes will be monthly.
 
 EXCEL CURRENT SETUP
 
-Story_Map | Creator(s) | Views | Total Views | Last_Count | Story_URL
------------- | -------------|-------------|-------------|-------------|-------------|
-Text Field | Text Field | Integer Field | Integer Field | Date Time | URL
+Info1 | Info2 | Info3 | Info4 | 
+------------ | -------------|-------------|-------------|
+Text Field | Text Field | Text Field | Text Field | 
 
+Info1 = State ADMIN CODE 
+Info2 = Dataset 
+Info3 = Attribute Name
+Info4 = Feature Class 
+
+*Monthly change values will be to the right of the above constants.These values include:
+Pass Counts = How many records are passing quality control
+Total Counts = Total number of records
+Accuracy % = Percent of records passing
+Percent Change = Percent Accuracy change from previous month
 
 ## Running The Script
 
 
 
 ## Release Notes
-Version: v1 06/21/2019
-Version: v2 02/27/2020
+Version: v1 02/27/2020
