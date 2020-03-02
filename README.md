@@ -53,4 +53,5 @@ Then verify that qc_reports_root contains QC reports and the national_xlsx exist
 
 ## Release Notes
 Version: v1 02/27/2020
+
 Version: v2 03/02/2020
