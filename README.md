@@ -5,7 +5,7 @@ Used in the monthly national QAQC process.
 
 
 ## Requirements
-* Python 3.4+
+* Python 2.7+, 3.4+ 
 * Works on Linux, Windows, and Mac OSX.
 
 #### Packages Needed
