@@ -22,10 +22,12 @@ national_xlsx = r'\\blm\\dfs\\loc\\EGIS\\ProjectsNational\\NationalDataQuality\\
 ##date_of_qc_run = '20200114' # Format: YYYYMMDD ; File Folder will be something like: 20200114_Reports ;
 if (sys.version_info > (3, 0)):
     # Python 3 code in this block
+    a = 1
     print ('Date formate: YYYYMMDD, Example: 20200204')
     date_of_qc_run = str(input('Date of QC run": '))
 else:
     # Python 2 code in this block
+    a = 2
     print ('Date formate: YYYYMMDD, Example: 20200204')
     date_of_qc_run = str(raw_input('Date of QC run": '))
 
@@ -58,14 +60,14 @@ try:
     xlsx = pd.read_excel(xlsx)
     # Create Backup
     if os.path.exists(backup+os.sep+'Nat_Review_%s.xlsx' % past_month_year):
-        print("National Tracking File found.")
+        print ("National Tracking File found.")
         print ('Backup Exists, passing.....')
         pass
     else:
         copyfile(national_xlsx, backup+os.sep+'Nat_Review_%s.xlsx' % past_month_year)
-        print("National Tracking File found. Backup Created.")
+        print ("National Tracking File found. Backup Created.")
 except:
-    print("National Tracking File not found.")
+    print ("National Tracking File not found.")
 ####### National Tasking Sheet #####
 columns = list(xlsx.columns.values)
 
@@ -79,14 +81,23 @@ for f in file_list:
     
     for s in tab_names:
         report = pd.ExcelFile(reports_dir + os.sep + f + os.sep + '%s_Quality_Reports.xlsx' % state)
-        # Read single sheet
-        report = pd.read_excel(report, skiprows=5, sheet_name=s)
-        # Drop Completely empty rows
-        report.dropna(axis=0, how='any', inplace=True)
-        report.columns = [month_year, month_year+'.1', month_year+'.2', 'Info3', 'Info4']
-        report['Info1'] = state # Assign state column
-        report[month_year+'.3'] = 0
-        r = r.append(report,ignore_index=True)
+        # Read single sheet and use sheet_name vs sheetname based on python ver
+        if a == 1:
+            report = pd.read_excel(report, skiprows=5, sheet_name=s)
+            # Drop Completely empty rows
+            report.dropna(axis=0, how='any', inplace=True)
+            report.columns = [month_year, month_year+'.1', month_year+'.2', 'Info3', 'Info4']
+            report['Info1'] = state # Assign state column
+            report[month_year+'.3'] = 0
+            r = r.append(report,ignore_index=True)
+        else:
+            report = pd.read_excel(report, skiprows=5, sheetname=s)
+            # Drop Completely empty rows
+            report.dropna(axis=0, how='any', inplace=True)
+            report.columns = [month_year, month_year+'.1', month_year+'.2', 'Info3', 'Info4']
+            report['Info1'] = state # Assign state column
+            report[month_year+'.3'] = 0
+            r = r.append(report,ignore_index=True)
 print ('Finished Compile.')
 
 
