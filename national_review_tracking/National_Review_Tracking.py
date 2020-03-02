@@ -24,12 +24,12 @@ if (sys.version_info > (3, 0)):
     # Python 3 code in this block
     a = 1
     print ('Date formate: YYYYMMDD, Example: 20200204')
-    date_of_qc_run = str(input('Date of QC run": '))
+    date_of_qc_run = str(input('Date of QC run: '))
 else:
     # Python 2 code in this block
     a = 2
     print ('Date formate: YYYYMMDD, Example: 20200204')
-    date_of_qc_run = str(raw_input('Date of QC run": '))
+    date_of_qc_run = str(raw_input('Date of QC run: '))
 
 reports_dir = qc_reports_root+os.sep+'%s_Reports' % date_of_qc_run
 # Get list of all  files ; Remove .xlsx and .zip
