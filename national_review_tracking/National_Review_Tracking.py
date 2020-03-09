@@ -1,4 +1,11 @@
+#
+# Description: Script takes the quality documents from the Sprint > reports directory from the monthly qaqc and compiles, formats, appends the 'Pass Counts', Record Numbers, Accuracy %,
+# dataset names, and attribute names into a monthly backup and a master tracking sheet. The SPRINT team uses this to track changes over time and help with QAQC issues amongst the states.
 
+# Dependencies: 1. all monthly qaqc reports inside a formatted reports folder in the Sprint > reports directory. File Folder will be something like: 20200114_Reports
+# 2. National_Review_Tracking.xlsx
+# 3. Openpyxl package for auto formatting, excel read, and excel export. Use the commented out section if user does not have the openpyxl packages installed and is not using the Sprint GUI.
+#
 import numpy as np
 import pandas as pd 
 import os
@@ -13,6 +20,22 @@ from openpyxl import load_workbook
 from openpyxl.styles import Font
 from openpyxl.styles.borders import Border, Side
 ##
+# Uncomment this section if the user would like to run this without the gui and they do not have xlswriter or openpyxl packages installed.
+'''
+try:
+    # Import libs for python 2.7 folks
+    install_path = r'\\blm\dfs\loc\EGIS\ProjectsNational\NationalDataQuality\Sprint\analysis_tools\Sprint_gui'
+    lib_path = os.path.abspath(install_path + r"\library")
+    sys.path.append(lib_path)
+    #
+    import xlsxwriter
+    import openpyxl
+    from openpyxl import load_workbook
+    from openpyxl.styles import Font
+    from openpyxl.styles.borders import Border, Side
+except:
+    print ('Reference to temp library folder for python 2 packages failed.')
+'''
 #
 #### Globals ####
 qc_output_root = r'\\blm\\dfs\\loc\\EGIS\\ProjectsNational\\NationalDataQuality\\Sprint\\analysis_tools\\National_Review'
